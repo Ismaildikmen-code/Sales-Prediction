@@ -1,20 +1,34 @@
-# Sales-Prediction
-Sales prediction using LightGBM
+# Sales Prediction Using LightGBM
 
-This repository contains a notebook for predicting sticker sales using LightGBM. The goal of the project is to forecast the number of stickers sold using historical data.
+This project demonstrates how to predict product sales using the LightGBM algorithm. The dataset contains sales data across different stores, countries, and products over several years. The objective is to predict the number of units sold based on historical data.
 
-## Files
+## Problem Statement
+Predict the sales (`num_sold`) for different products in multiple stores across various countries. The task is to minimize the error between predicted and actual sales.
 
-- `forecasting-sticker-sales.ipynb`: The main Jupyter notebook containing the model and analysis.
-- `README.md`: Project documentation.
+## Dataset
+The dataset includes the following columns:
+- **date**: Date of the sale
+- **country**: Country where the sale occurred
+- **store**: Store where the product was sold
+- **product**: Product being sold
+- **num_sold**: Number of units sold (target variable)
 
-## Requirements
+## Approach
+1. **Data Preprocessing**:
+   - Removed duplicates and missing values
+   - Label encoded categorical features (`country`, `store`, `product`)
+   - Applied log transformation to the target variable `num_sold`
 
-To run this notebook, you will need to install the following libraries:
+2. **Model**:
+   - LightGBM Regressor was used for sales prediction
+   - Hyperparameter tuning was performed using GridSearchCV
 
-- lightgbm
-- pandas
-- numpy
-- matplotlib
-- scikit-learn
+3. **Evaluation**:
+   - Mean Absolute Percentage Error (MAPE) was used for model evaluation
+   - The final model achieved a test MAPE score of 0.142
 
+## Installation
+To run the code, you will need to install the following Python packages:
+
+```bash
+pip install lightgbm scikit-learn pandas numpy matplotlib
